@@ -23,9 +23,9 @@ export const profile = {
 }
 
 export const nav = [
-  { label: 'About', href: '#about' },
   { label: 'Results', href: '#results' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Branding', href: '#branding' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -90,6 +90,50 @@ export const services = [
     n: '05',
     name: 'AI Creative Workflows',
     desc: 'Advanced use of generative AI inside production pipelines to accelerate concepting, retouching and asset variation, plus HTML based sites and prototypes.',
+  },
+]
+
+/**
+ * Brand identity showcase. Each brand is a case: a hero identity visual plus
+ * two applications. `accent` is the brand's own colour, used for the card's
+ * hover glow and palette chip.
+ */
+export type Brand = {
+  name: string
+  sector: string
+  accent: string
+  hero: string
+  apps: [string, string]
+}
+
+export const brands: Brand[] = [
+  {
+    name: 'Koch Engenharia',
+    sector: 'Construction & development',
+    accent: '#9A2436',
+    hero: 'work/brands/koch-hero.jpg',
+    apps: ['work/brands/koch-cards.jpg', 'work/brands/koch-fabric.jpg'],
+  },
+  {
+    name: 'Sulriso',
+    sector: 'Business management',
+    accent: '#2323E6',
+    hero: 'work/brands/sulriso-hero.jpg',
+    apps: ['work/brands/sulriso-cards.jpg', 'work/brands/sulriso-office.jpg'],
+  },
+  {
+    name: 'Stalotech',
+    sector: 'Tech services',
+    accent: '#F7A500',
+    hero: 'work/brands/stalotech-hero.jpg',
+    apps: ['work/brands/stalotech-flyer.jpg', 'work/brands/stalotech-cards.jpg'],
+  },
+  {
+    name: 'Cloud Park',
+    sector: 'Smart parking',
+    accent: '#2FA3E6',
+    hero: 'work/brands/cloudpark-hero.jpg',
+    apps: ['work/brands/cloudpark-colors.jpg', 'work/brands/cloudpark-apps.jpg'],
   },
 ]
 

@@ -4,6 +4,7 @@ import AboutSection from './sections/AboutSection'
 import ResultsSection from './sections/ResultsSection'
 import ServicesSection from './sections/ServicesSection'
 import ProjectsSection from './sections/ProjectsSection'
+import BrandingSection from './sections/BrandingSection'
 import ContactSection from './sections/ContactSection'
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
       <ResultsSection />
       <ServicesSection />
       <ProjectsSection />
+      <BrandingSection />
       <ContactSection />
     </main>
   )
