@@ -1,11 +1,27 @@
+import { Maximize2 } from 'lucide-react'
 import FadeIn from '../components/FadeIn'
+import { useLightbox } from '../components/Lightbox'
 import { asset, brands } from '../data/site'
 import type { Brand } from '../data/site'
 
 function BrandCard({ brand, index }: { brand: Brand; index: number }) {
+  const { open } = useLightbox()
+  const view = () => open([brand.hero, ...brand.apps], brand.name)
   return (
     <FadeIn delay={index * 0.08} y={40}>
-      <article className="group relative flex flex-col overflow-hidden rounded-3xl border border-[#D7E2EA]/12 bg-[#D7E2EA]/[0.02] transition-colors duration-500 hover:border-[#D7E2EA]/25">
+      <article
+        onClick={view}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            view()
+          }
+        }}
+        aria-label={`View ${brand.name} identity`}
+        className="group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-[#D7E2EA]/12 bg-[#D7E2EA]/[0.02] transition-colors duration-500 hover:border-[#D7E2EA]/25"
+      >
         {/* Brand-coloured wash that lifts in on hover. */}
         <div
           aria-hidden
@@ -14,7 +30,7 @@ function BrandCard({ brand, index }: { brand: Brand; index: number }) {
         />
 
         {/* Identity hero. */}
-        <div className="aspect-[4/3] overflow-hidden">
+        <div className="relative aspect-[4/3] overflow-hidden">
           <img
             src={asset(brand.hero)}
             alt={`${brand.name} brand identity`}
@@ -22,6 +38,12 @@ function BrandCard({ brand, index }: { brand: Brand; index: number }) {
             decoding="async"
             className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
           />
+          <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-[#0C0C0C]/0 opacity-0 transition-all duration-300 group-hover:bg-[#0C0C0C]/40 group-hover:opacity-100">
+            <span className="flex items-center gap-2 rounded-full border border-[#D7E2EA]/50 bg-[#0C0C0C]/60 px-4 py-2 text-[0.7rem] font-medium uppercase tracking-widest text-[#D7E2EA] backdrop-blur-sm">
+              <Maximize2 size={14} strokeWidth={2} />
+              View
+            </span>
+          </div>
         </div>
 
         <div className="flex items-center justify-between gap-4 px-5 pt-5 sm:px-6">

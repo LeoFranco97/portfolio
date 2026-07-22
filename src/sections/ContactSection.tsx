@@ -1,5 +1,5 @@
 // lucide dropped its brand icons, so AtSign stands in for the social handle.
-import { Mail, MessageCircle, ExternalLink, AtSign } from 'lucide-react'
+import { Mail, MessageCircle, AtSign } from 'lucide-react'
 import FadeIn from '../components/FadeIn'
 import { availability, experience, profile } from '../data/site'
 
@@ -77,15 +77,6 @@ export default function ContactSection() {
               >
                 <MessageCircle size={18} strokeWidth={1.5} />
                 <span className="text-sm font-light sm:text-base">{profile.whatsapp}</span>
-              </a>
-              <a
-                href={profile.behance}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-3 text-[#D7E2EA] transition-opacity hover:opacity-70"
-              >
-                <ExternalLink size={18} strokeWidth={1.5} />
-                <span className="text-sm font-light sm:text-base">Behance portfolio</span>
               </a>
               <a
                 href={profile.instagram}

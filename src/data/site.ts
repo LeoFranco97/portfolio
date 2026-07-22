@@ -143,7 +143,8 @@ export type Project = {
   name: string
   blurb: string
   images: { col1a: string; col1b: string; col2: string }
-  href?: string
+  /** Images shown in the in-site gallery when the card is opened. */
+  gallery: string[]
   /** Marks work shown under client confidentiality. */
   nda?: boolean
 }
@@ -164,7 +165,12 @@ export const projects: Project[] = [
       col1b: 'work/dengue-print.jpg',
       col2: 'work/dengue-web.jpg',
     },
-    href: 'https://www.behance.net/gallery/195360139/DENGUE-MATA-PROTEJA-A-SUA-FAMLIA-DESTE-MAL',
+    gallery: [
+      'work/dengue-web.jpg',
+      'work/dengue-print.jpg',
+      'work/dengue-outdoor.jpg',
+      'work/dengue-social.jpg',
+    ],
   },
   {
     n: '02',
@@ -177,7 +183,11 @@ export const projects: Project[] = [
       col1b: 'work/arqcit-services.jpg',
       col2: 'work/arqcit-cover.jpg',
     },
-    href: 'https://www.behance.net/gallery/166844531/ARQCIT-Proposta-de-Oramento-Design-Arquitetura',
+    gallery: [
+      'work/arqcit-cover.jpg',
+      'work/arqcit-services.jpg',
+      'work/arqcit-detail.jpg',
+    ],
   },
   {
     n: '03',
@@ -190,6 +200,14 @@ export const projects: Project[] = [
       col1b: 'work/bond-03.jpg',
       col2: 'work/bond-turkish.jpg',
     },
+    gallery: [
+      'work/bond-turkish.jpg',
+      'work/bond-vanuatu-ad.jpg',
+      'work/bond-01.jpg',
+      'work/bond-03.jpg',
+      'work/bond-vanuatu.jpg',
+      'work/bond-02.jpg',
+    ],
   },
   {
     n: '04',
@@ -202,6 +220,13 @@ export const projects: Project[] = [
       col1b: 'work/n1-tower-skybridge.jpg',
       col2: 'work/n1-tower-numberone.jpg',
     },
+    gallery: [
+      'work/n1-tower-numberone.jpg',
+      'work/n1-tower-urbanbeach.jpg',
+      'work/n1-tower-skybridge.jpg',
+      'work/n1-labrise-1.jpg',
+      'work/n1-prelaunch.jpg',
+    ],
   },
   {
     n: '05',
@@ -214,7 +239,12 @@ export const projects: Project[] = [
       col1b: 'work/berlanda-aniversario.jpg',
       col2: 'work/berlanda-smart.jpg',
     },
-    href: 'https://www.behance.net/leonardojt7169',
+    gallery: [
+      'work/berlanda-smart.jpg',
+      'work/berlanda-desconto.jpg',
+      'work/berlanda-aniversario.jpg',
+      'work/selo-kv-varejo.jpg',
+    ],
   },
 ]
 

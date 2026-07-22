@@ -1,9 +1,9 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import type { MotionValue } from 'framer-motion'
-import { Lock } from 'lucide-react'
+import { Lock, Maximize2 } from 'lucide-react'
 import FadeIn from '../components/FadeIn'
-import { LiveProjectButton } from '../components/Buttons'
+import { useLightbox } from '../components/Lightbox'
 import { asset, projects } from '../data/site'
 import type { Project } from '../data/site'
 
@@ -18,6 +18,9 @@ function Card({
   total: number
   progress: MotionValue<number>
 }) {
+  const { open } = useLightbox()
+  const view = () => open(project.gallery, project.name)
+
   // Cards further up the stack shrink a little as the next one covers them.
   const targetScale = 1 - (total - 1 - index) * 0.03
   const scale = useTransform(progress, [index / total, 1], [1, targetScale])
@@ -52,14 +55,21 @@ function Card({
             </div>
           </div>
 
-          {project.nda ? (
-            <span className="inline-flex shrink-0 items-center gap-2 rounded-full border-2 border-[#D7E2EA]/40 px-6 py-3 text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60 sm:px-8 sm:text-sm">
-              <Lock size={15} strokeWidth={1.75} />
-              Under NDA
-            </span>
-          ) : (
-            project.href && <LiveProjectButton href={project.href} />
-          )}
+          <div className="flex shrink-0 items-center gap-3">
+            {project.nda && (
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-[#D7E2EA]/40 px-5 py-2.5 text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60 sm:px-6 sm:text-sm">
+                <Lock size={15} strokeWidth={1.75} />
+                Under NDA
+              </span>
+            )}
+            <button
+              onClick={view}
+              className="inline-flex items-center gap-2 rounded-full border-2 border-[#D7E2EA] px-6 py-2.5 text-sm font-medium uppercase tracking-widest text-[#D7E2EA] transition-colors duration-200 hover:bg-[#D7E2EA]/10 sm:px-8"
+            >
+              <Maximize2 size={15} strokeWidth={2} />
+              View
+            </button>
+          </div>
         </div>
 
         {/*
@@ -68,7 +78,19 @@ function Card({
           with `h-full` and no resolved parent height, a tall image renders at
           its intrinsic size and the card spills over the next section.
         */}
-        <div className="flex gap-3 md:gap-4">
+        <div
+          onClick={view}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              view()
+            }
+          }}
+          aria-label={`View ${project.name}`}
+          className="group flex cursor-pointer gap-3 md:gap-4"
+        >
           <div className="flex w-[40%] flex-col gap-3 md:gap-4">
             <img
               src={asset(project.images.col1a)}
@@ -98,13 +120,20 @@ function Card({
             />
             {/* Without this the blur reads as a broken image rather than a choice. */}
             {project.nda && (
-              <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-center pt-4">
                 <span className="flex items-center gap-2 rounded-full bg-[#0C0C0C]/70 px-5 py-2.5 text-[0.6rem] font-medium uppercase tracking-[0.25em] text-[#D7E2EA] backdrop-blur-sm sm:text-xs">
                   <Lock size={13} strokeWidth={2} />
                   Confidential
                 </span>
               </div>
             )}
+            {/* Hover affordance so it reads as openable. */}
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-[40px] bg-[#0C0C0C]/0 opacity-0 transition-all duration-300 group-hover:bg-[#0C0C0C]/40 group-hover:opacity-100 sm:rounded-[50px] md:rounded-[60px]">
+              <span className="flex items-center gap-2 rounded-full border border-[#D7E2EA]/50 bg-[#0C0C0C]/60 px-5 py-2.5 text-xs font-medium uppercase tracking-widest text-[#D7E2EA] backdrop-blur-sm">
+                <Maximize2 size={15} strokeWidth={2} />
+                View gallery
+              </span>
+            </div>
           </div>
         </div>
       </motion.article>
