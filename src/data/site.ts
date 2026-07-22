@@ -191,10 +191,10 @@ export const projects: Project[] = [
   },
   {
     n: '03',
-    category: 'International / Türkiye, UAE, Egypt',
+    category: 'International / Confidential',
     name: 'Bond and Partners',
     blurb:
-      'Marketing and creative direction for a citizenship and residency by investment firm operating across Türkiye, the UAE and Egypt. Brand positioning, campaign systems and a full programmatic advertising suite for global mobility programmes, produced in English for an international audience.',
+      'Two years as creative and marketing lead for an international citizenship and residency by investment firm operating across Türkiye, the UAE and Egypt. Under a compliance and confidentiality agreement, the work cannot be disclosed and is shown redacted.',
     images: {
       col1a: 'work/bond-01.jpg',
       col1b: 'work/bond-03.jpg',
@@ -208,6 +208,7 @@ export const projects: Project[] = [
       'work/bond-vanuatu.jpg',
       'work/bond-02.jpg',
     ],
+    nda: true,
   },
   {
     n: '04',
@@ -225,7 +226,6 @@ export const projects: Project[] = [
       'work/n1-tower-urbanbeach.jpg',
       'work/n1-tower-skybridge.jpg',
       'work/n1-labrise-1.jpg',
-      'work/n1-prelaunch.jpg',
     ],
   },
   {
@@ -256,13 +256,13 @@ export const projects: Project[] = [
 export const marqueeRowOne = [
   'work/dengue-print.jpg',
   'work/arqcit-cover.jpg',
-  'work/bond-turkish.jpg',
+  'work/brands/koch-cards.jpg',
   'work/bosforo-logo.jpg',
   'work/packaging-01.jpg',
   'work/dengue-web.jpg',
   'work/cloud-park.jpg',
   'work/bosforo-wall.jpg',
-  'work/bond-vanuatu-ad.jpg',
+  'work/brands/sulriso-cards.jpg',
   'work/oktober-2021.jpg',
   'work/stalotech.jpg',
   'work/packaging-02.jpg',
@@ -274,11 +274,11 @@ export const marqueeRowOne = [
 
 export const marqueeRowTwo = [
   'work/dengue-outdoor.jpg',
-  'work/bosforo-shirt.jpg',
-  'work/bond-03.jpg',
+  'work/brands/stalotech-cards.jpg',
+  'work/brands/koch-fabric.jpg',
   'work/arqcit-services.jpg',
   'work/packaging-03.jpg',
-  'work/n1-prelaunch.jpg',
+  'work/brands/cloudpark-apps.jpg',
   'work/vico.jpg',
   'work/total-prime.jpg',
   'work/bosforo-card.jpg',
