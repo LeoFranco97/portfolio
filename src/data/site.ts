@@ -103,8 +103,16 @@ export type Brand = {
   sector: string
   accent: string
   hero: string
-  apps: [string, string]
+  apps?: [string, string]
+  /** Full presentation shown when the card is opened. */
+  gallery: string[]
+  /** Smaller, lower-emphasis card (logo + name only). */
+  compact?: boolean
 }
+
+/** Page-image paths for a multi-page presentation. */
+const brandPages = (slug: string, n: number) =>
+  Array.from({ length: n }, (_, i) => `work/brands/${slug}-p${String(i).padStart(2, '0')}.jpg`)
 
 export const brands: Brand[] = [
   {
@@ -113,6 +121,7 @@ export const brands: Brand[] = [
     accent: '#2323E6',
     hero: 'work/brands/sulriso-hero.jpg',
     apps: ['work/brands/sulriso-cards.jpg', 'work/brands/sulriso-office.jpg'],
+    gallery: ['work/brands/sulriso-full.jpg'],
   },
   {
     name: 'Stalotech',
@@ -120,6 +129,7 @@ export const brands: Brand[] = [
     accent: '#F7A500',
     hero: 'work/brands/stalotech-hero.jpg',
     apps: ['work/brands/stalotech-flyer.jpg', 'work/brands/stalotech-cards.jpg'],
+    gallery: ['work/brands/stalotech-full.jpg'],
   },
   {
     name: 'Cloud Park',
@@ -127,6 +137,31 @@ export const brands: Brand[] = [
     accent: '#2FA3E6',
     hero: 'work/brands/cloudpark-hero.jpg',
     apps: ['work/brands/cloudpark-colors.jpg', 'work/brands/cloudpark-apps.jpg'],
+    gallery: brandPages('cloudpark', 20),
+  },
+  {
+    name: 'Steelers',
+    sector: 'Steel construction',
+    accent: '#E8621A',
+    hero: 'work/brands/steelers-hero.jpg',
+    apps: ['work/brands/steelers-app1.jpg', 'work/brands/steelers-app2.jpg'],
+    gallery: brandPages('steelers', 8),
+  },
+  {
+    name: 'RafaIN',
+    sector: 'Personal brand',
+    accent: '#3B39E0',
+    hero: 'work/brands/rafain-hero.jpg',
+    apps: ['work/brands/rafain-app1.jpg', 'work/brands/rafain-app2.jpg'],
+    gallery: ['work/brands/rafain-full.jpg'],
+  },
+  {
+    name: 'Green Decor',
+    sector: 'Furniture & decor',
+    accent: '#1F6B43',
+    hero: 'work/brands/greendecor-hero.jpg',
+    apps: ['work/brands/greendecor-app1.jpg', 'work/brands/greendecor-app2.jpg'],
+    gallery: brandPages('greendecor', 25),
   },
   {
     name: 'Koch Engenharia',
@@ -134,6 +169,23 @@ export const brands: Brand[] = [
     accent: '#9A2436',
     hero: 'work/brands/koch-hero.jpg',
     apps: ['work/brands/koch-cards.jpg', 'work/brands/koch-fabric.jpg'],
+    gallery: ['work/brands/koch-full.jpg'],
+  },
+  {
+    name: 'Vico',
+    sector: 'Rebranding',
+    accent: '#6B7280',
+    hero: 'work/brands/vico-hero.jpg',
+    gallery: ['work/brands/vico-full.jpg'],
+    compact: true,
+  },
+  {
+    name: 'Total Prime',
+    sector: 'Dental care',
+    accent: '#7C3AED',
+    hero: 'work/brands/prime-hero.jpg',
+    gallery: ['work/brands/prime-full.jpg'],
+    compact: true,
   },
 ]
 

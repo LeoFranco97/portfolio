@@ -73,6 +73,10 @@ function View({
   go: (d: number) => void
 }) {
   const many = state.images.length > 1
+  // Tall presentations (full brand decks) scroll at readable width instead of
+  // shrinking to fit; normal images (deck pages, ad creatives) fit to screen.
+  const [tall, setTall] = useState(false)
+  useEffect(() => setTall(false), [state.index])
   return (
     <div
       role="dialog"
@@ -106,7 +110,11 @@ function View({
       </div>
 
       {/* Stage */}
-      <div className="relative flex flex-1 items-center justify-center overflow-hidden px-4 pb-6 sm:px-16">
+      <div
+        className={`relative flex flex-1 justify-center px-4 pb-6 sm:px-16 ${
+          tall ? 'items-start overflow-y-auto overflow-x-hidden' : 'items-center overflow-hidden'
+        }`}
+      >
         {many && (
           <button
             onClick={(e) => {
@@ -114,7 +122,7 @@ function View({
               go(-1)
             }}
             aria-label="Previous"
-            className="absolute left-2 z-10 rounded-full border border-[#D7E2EA]/25 bg-[#0C0C0C]/60 p-2.5 text-[#D7E2EA] transition-colors hover:bg-[#D7E2EA]/10 sm:left-5"
+            className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full border border-[#D7E2EA]/25 bg-[#0C0C0C]/60 p-2.5 text-[#D7E2EA] transition-colors hover:bg-[#D7E2EA]/10 sm:left-5"
           >
             <ChevronLeft size={22} strokeWidth={1.75} />
           </button>
@@ -125,7 +133,15 @@ function View({
           src={asset(state.images[state.index])}
           alt={`${state.title} ${state.index + 1}`}
           onClick={(e) => e.stopPropagation()}
-          className="max-h-full max-w-full rounded-xl object-contain shadow-2xl"
+          onLoad={(e) => {
+            const t = e.currentTarget
+            setTall(t.naturalHeight / t.naturalWidth > 1.8)
+          }}
+          className={
+            tall
+              ? 'mx-auto h-auto w-full max-w-[880px] rounded-xl shadow-2xl'
+              : 'max-h-full max-w-full rounded-xl object-contain shadow-2xl'
+          }
           style={{ animation: 'lb-fade 0.2s ease-out' }}
         />
 
@@ -136,7 +152,7 @@ function View({
               go(1)
             }}
             aria-label="Next"
-            className="absolute right-2 z-10 rounded-full border border-[#D7E2EA]/25 bg-[#0C0C0C]/60 p-2.5 text-[#D7E2EA] transition-colors hover:bg-[#D7E2EA]/10 sm:right-5"
+            className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full border border-[#D7E2EA]/25 bg-[#0C0C0C]/60 p-2.5 text-[#D7E2EA] transition-colors hover:bg-[#D7E2EA]/10 sm:right-5"
           >
             <ChevronRight size={22} strokeWidth={1.75} />
           </button>

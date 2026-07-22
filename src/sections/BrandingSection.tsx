@@ -6,7 +6,7 @@ import type { Brand } from '../data/site'
 
 function BrandCard({ brand, index }: { brand: Brand; index: number }) {
   const { open } = useLightbox()
-  const view = () => open([brand.hero, ...brand.apps], brand.name)
+  const view = () => open(brand.gallery, brand.name)
   return (
     <FadeIn delay={index * 0.08} y={40}>
       <article
@@ -22,14 +22,12 @@ function BrandCard({ brand, index }: { brand: Brand; index: number }) {
         aria-label={`View ${brand.name} identity`}
         className="group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-[#D7E2EA]/12 bg-[#D7E2EA]/[0.02] transition-colors duration-500 hover:border-[#D7E2EA]/25"
       >
-        {/* Brand-coloured wash that lifts in on hover. */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{ boxShadow: `inset 0 0 80px -24px ${brand.accent}` }}
         />
 
-        {/* Identity hero. */}
         <div className="relative aspect-[4/3] overflow-hidden">
           <img
             src={asset(brand.hero)}
@@ -62,19 +60,70 @@ function BrandCard({ brand, index }: { brand: Brand; index: number }) {
           />
         </div>
 
-        {/* Applications. */}
-        <div className="mt-4 grid grid-cols-2 gap-2.5 px-3 pb-3 sm:gap-3 sm:px-4 sm:pb-4">
-          {brand.apps.map((a, i) => (
-            <div key={i} className="aspect-[3/2] overflow-hidden rounded-xl bg-white/[0.02]">
-              <img
-                src={asset(a)}
-                alt={`${brand.name} application`}
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-              />
-            </div>
-          ))}
+        {brand.apps && (
+          <div className="mt-4 grid grid-cols-2 gap-2.5 px-3 pb-3 sm:gap-3 sm:px-4 sm:pb-4">
+            {brand.apps.map((a, i) => (
+              <div key={i} className="aspect-[3/2] overflow-hidden rounded-xl bg-white/[0.02]">
+                <img
+                  src={asset(a)}
+                  alt={`${brand.name} application`}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                />
+              </div>
+            ))}
+          </div>
+        )}
+      </article>
+    </FadeIn>
+  )
+}
+
+function CompactCard({ brand, index }: { brand: Brand; index: number }) {
+  const { open } = useLightbox()
+  const view = () => open(brand.gallery, brand.name)
+  return (
+    <FadeIn delay={index * 0.08} y={30}>
+      <article
+        onClick={view}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            view()
+          }
+        }}
+        aria-label={`View ${brand.name} identity`}
+        className="group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-[#D7E2EA]/10 bg-[#D7E2EA]/[0.02] transition-colors duration-500 hover:border-[#D7E2EA]/25"
+      >
+        <div className="relative aspect-[16/10] overflow-hidden">
+          <img
+            src={asset(brand.hero)}
+            alt={`${brand.name} brand identity`}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          />
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#0C0C0C]/0 opacity-0 transition-all duration-300 group-hover:bg-[#0C0C0C]/40 group-hover:opacity-100">
+            <Maximize2 size={16} strokeWidth={2} className="text-[#D7E2EA]" />
+          </div>
+        </div>
+        <div className="flex items-center justify-between gap-3 px-4 py-3">
+          <div>
+            <h3 className="text-sm font-medium uppercase tracking-wide text-[#D7E2EA]">
+              {brand.name}
+            </h3>
+            <p className="mt-0.5 text-[0.6rem] font-light uppercase tracking-[0.2em] text-[#D7E2EA]/40">
+              {brand.sector}
+            </p>
+          </div>
+          <span
+            aria-hidden
+            className="h-5 w-5 shrink-0 rounded-full ring-1 ring-inset ring-white/25"
+            style={{ background: brand.accent }}
+          />
         </div>
       </article>
     </FadeIn>
@@ -82,6 +131,9 @@ function BrandCard({ brand, index }: { brand: Brand; index: number }) {
 }
 
 export default function BrandingSection() {
+  const main = brands.filter((b) => !b.compact)
+  const compact = brands.filter((b) => b.compact)
+
   return (
     <section
       id="branding"
@@ -107,14 +159,30 @@ export default function BrandingSection() {
           <p className="mx-auto mt-6 max-w-2xl text-center text-sm font-light leading-relaxed text-[#D7E2EA]/70 sm:mt-8 sm:text-base">
             Complete visual identities built from the mark up: logo systems, colour,
             typography and the applications that carry each brand into the real world.
+            Click any brand to open the full case.
           </p>
         </FadeIn>
 
         <div className="mt-14 grid gap-6 sm:mt-16 sm:grid-cols-2 sm:gap-7 lg:gap-8">
-          {brands.map((b, i) => (
+          {main.map((b, i) => (
             <BrandCard key={b.name} brand={b} index={i} />
           ))}
         </div>
+
+        {compact.length > 0 && (
+          <>
+            <FadeIn delay={0} y={20}>
+              <p className="mt-14 mb-6 text-center text-[0.65rem] font-medium uppercase tracking-[0.25em] text-[#D7E2EA]/35 sm:mt-16">
+                More identities
+              </p>
+            </FadeIn>
+            <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+              {compact.map((b, i) => (
+                <CompactCard key={b.name} brand={b} index={i} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   )
