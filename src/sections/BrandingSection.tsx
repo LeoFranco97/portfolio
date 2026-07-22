@@ -83,7 +83,10 @@ function BrandCard({ brand, index }: { brand: Brand; index: number }) {
 
 export default function BrandingSection() {
   return (
-    <section id="branding" className="bg-[#0C0C0C] px-5 py-20 sm:px-8 sm:py-24 md:px-10 md:py-28">
+    <section
+      id="branding"
+      className="relative z-10 -mt-10 rounded-t-[40px] bg-[#0C0C0C] px-5 py-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-8 sm:py-24 md:-mt-14 md:rounded-t-[60px] md:px-10 md:py-28"
+    >
       <div className="mx-auto max-w-6xl">
         <FadeIn delay={0} y={24}>
           <p className="mb-4 text-center text-[0.7rem] font-medium uppercase tracking-[0.25em] text-[#D7E2EA]/50 sm:mb-6 sm:text-sm">

@@ -17,8 +17,8 @@ export default function App() {
         <AboutSection />
         <ResultsSection />
         <ServicesSection />
-        <ProjectsSection />
         <BrandingSection />
+        <ProjectsSection />
         <ContactSection />
       </main>
     </LightboxProvider>

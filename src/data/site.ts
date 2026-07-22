@@ -24,8 +24,8 @@ export const profile = {
 
 export const nav = [
   { label: 'Results', href: '#results' },
-  { label: 'Projects', href: '#projects' },
   { label: 'Branding', href: '#branding' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -108,13 +108,6 @@ export type Brand = {
 
 export const brands: Brand[] = [
   {
-    name: 'Koch Engenharia',
-    sector: 'Construction & development',
-    accent: '#9A2436',
-    hero: 'work/brands/koch-hero.jpg',
-    apps: ['work/brands/koch-cards.jpg', 'work/brands/koch-fabric.jpg'],
-  },
-  {
     name: 'Sulriso',
     sector: 'Business management',
     accent: '#2323E6',
@@ -134,6 +127,13 @@ export const brands: Brand[] = [
     accent: '#2FA3E6',
     hero: 'work/brands/cloudpark-hero.jpg',
     apps: ['work/brands/cloudpark-colors.jpg', 'work/brands/cloudpark-apps.jpg'],
+  },
+  {
+    name: 'Koch Engenharia',
+    sector: 'Construction & development',
+    accent: '#9A2436',
+    hero: 'work/brands/koch-hero.jpg',
+    apps: ['work/brands/koch-cards.jpg', 'work/brands/koch-fabric.jpg'],
   },
 ]
 
