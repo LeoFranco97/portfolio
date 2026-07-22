@@ -34,12 +34,12 @@ export const aboutText =
 
 /** Countries worked in, shown as a credential strip. */
 export const territories = [
-  { flag: '🇧🇷', country: 'Brazil', note: 'Base' },
-  { flag: '🇹🇷', country: 'Türkiye', note: 'Istanbul, 1 yr' },
-  { flag: '🇦🇪', country: 'UAE', note: 'Dubai, 6 mo' },
-  { flag: '🇪🇬', country: 'Egypt', note: 'Cairo, 3 mo' },
-  { flag: '🇺🇸', country: 'USA', note: 'Colorado' },
-]
+  { code: 'BR', country: 'Brazil', note: 'Base' },
+  { code: 'TR', country: 'Türkiye', note: 'Istanbul, 1 yr' },
+  { code: 'AE', country: 'UAE', note: 'Dubai, 6 mo' },
+  { code: 'EG', country: 'Egypt', note: 'Cairo, 3 mo' },
+  { code: 'US', country: 'USA', note: 'Colorado' },
+] as const
 
 /**
  * Performance-marketing proof. The polished dashboard is the centrepiece;

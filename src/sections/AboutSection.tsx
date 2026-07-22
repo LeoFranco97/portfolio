@@ -1,5 +1,6 @@
 import FadeIn from '../components/FadeIn'
 import AnimatedText from '../components/AnimatedText'
+import Flag from '../components/Flag'
 import { ContactButton } from '../components/Buttons'
 import { aboutText, territories } from '../data/site'
 
@@ -47,10 +48,8 @@ export default function AboutSection() {
         <FadeIn delay={0.1} y={24} className="w-full">
           <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 sm:gap-x-10">
             {territories.map((t) => (
-              <li key={t.country} className="flex flex-col items-center gap-1 text-center">
-                <span className="text-2xl md:text-3xl" aria-hidden>
-                  {t.flag}
-                </span>
+              <li key={t.country} className="flex flex-col items-center gap-1.5 text-center">
+                <Flag code={t.code} className="h-6 w-9 md:h-7 md:w-[42px]" />
                 <span className="text-xs font-medium uppercase tracking-widest text-[#D7E2EA] sm:text-sm">
                   {t.country}
                 </span>

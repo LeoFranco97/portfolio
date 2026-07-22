@@ -37,7 +37,15 @@ export default function HeroSection() {
         Positioning lives on this outer div: Framer Motion writes its own
         `transform`, which would otherwise clobber Tailwind's translate.
       */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[280px] -translate-x-1/2 -translate-y-1/2 sm:bottom-0 sm:top-auto sm:w-[360px] sm:translate-y-0 md:w-[440px] lg:w-[520px]">
+      {/*
+        Width is capped by viewport height as well as width, so on short
+        displays (laptops at 125% scaling, 1280x720, etc.) the figure never
+        grows taller than the hero and dominates the screen.
+      */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 sm:bottom-0 sm:top-auto sm:translate-y-0"
+        style={{ width: 'min(82vw, 520px, 58vh)' }}
+      >
         <FadeIn delay={0.6} y={30}>
           <Magnet padding={150} strength={3}>
             <Portrait />
