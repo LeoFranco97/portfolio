@@ -17,6 +17,7 @@ export const profile = {
   email: 'leonardojtfranco@gmail.com',
   whatsapp: '+55 47 99634 7904',
   whatsappUrl: 'https://wa.me/5547996347904',
+  linkedin: 'https://www.linkedin.com/in/leonardo-franco-b7429b140/',
   behance: 'https://www.behance.net/leonardojt7169',
   instagram: 'https://instagram.com/leotfranco',
   location: 'Itapema, Brazil',
@@ -139,6 +140,7 @@ export const brands: Brand[] = [
     hero: 'work/brands/cloudpark-hero.jpg',
     apps: ['work/brands/cloudpark-colors.jpg', 'work/brands/cloudpark-apps.jpg'],
     gallery: brandPages('cloudpark', 20),
+    compact: true,
   },
   {
     name: 'L17 Capital',
@@ -169,16 +171,8 @@ export const brands: Brand[] = [
     sector: 'Marketing agency',
     accent: '#1FA8E4',
     hero: 'work/brands/rafes-hero.jpg',
-    // The two Rafes deliverables united: the full presentation, then the
-    // 22-page brand guide.
-    gallery: [
-      'work/brands/rafes-full.jpg',
-      ...Array.from(
-        { length: 22 },
-        (_, i) => `work/brands/rafes-m${String(i).padStart(2, '0')}.jpg`,
-      ),
-    ],
-    compact: true,
+    apps: ['work/brands/rafes-app1.jpg', 'work/brands/rafes-app2.jpg'],
+    gallery: ['work/brands/rafes-full.jpg'],
   },
   {
     name: 'Vico',

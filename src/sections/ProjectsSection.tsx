@@ -72,6 +72,11 @@ function Card({
           </div>
         </div>
 
+        {/* Full-width blurb for narrow screens, where it does not fit beside the title. */}
+        <p className="mb-5 px-2 text-sm font-light leading-relaxed text-[#D7E2EA]/60 md:px-4 lg:hidden">
+          {project.blurb}
+        </p>
+
         {/*
           Every image gets a definite height. Sizing against vh as well as vw
           keeps the card inside its 85vh sticky container on any viewport:
