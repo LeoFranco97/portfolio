@@ -36,9 +36,9 @@ export const aboutText =
 /** Countries worked in, shown as a credential strip. */
 export const territories = [
   { code: 'BR', country: 'Brazil', note: 'Base' },
-  { code: 'TR', country: 'Türkiye', note: 'Istanbul, 1 yr' },
-  { code: 'AE', country: 'UAE', note: 'Dubai, 6 mo' },
-  { code: 'EG', country: 'Egypt', note: 'Cairo, 3 mo' },
+  { code: 'TR', country: 'Türkiye', note: 'Istanbul' },
+  { code: 'AE', country: 'UAE', note: 'Dubai' },
+  { code: 'EG', country: 'Egypt', note: 'Cairo' },
   { code: 'US', country: 'USA', note: 'Colorado' },
 ] as const
 
