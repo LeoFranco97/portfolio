@@ -196,6 +196,22 @@ export const brands: Brand[] = [
     gallery: ['work/brands/gr-full.jpg'],
     compact: true,
   },
+  {
+    name: 'Rafes',
+    sector: 'Marketing agency',
+    accent: '#1FA8E4',
+    hero: 'work/brands/rafes-hero.jpg',
+    // The two Rafes deliverables united: the full presentation, then the
+    // 22-page brand guide.
+    gallery: [
+      'work/brands/rafes-full.jpg',
+      ...Array.from(
+        { length: 22 },
+        (_, i) => `work/brands/rafes-m${String(i).padStart(2, '0')}.jpg`,
+      ),
+    ],
+    compact: true,
+  },
 ]
 
 export type Presentation = {
@@ -324,17 +340,17 @@ export const projects: Project[] = [
  */
 export const marqueeRowOne = [
   'work/dengue-print.jpg',
-  'work/arqcit-cover.jpg',
+  'work/brands/l17-app1.jpg',
   'work/brands/koch-cards.jpg',
   'work/bosforo-logo.jpg',
-  'work/packaging-01.jpg',
+  'work/brands/steelers-hero.jpg',
   'work/dengue-web.jpg',
   'work/cloud-park.jpg',
   'work/bosforo-wall.jpg',
   'work/brands/sulriso-cards.jpg',
   'work/oktober-2021.jpg',
   'work/stalotech.jpg',
-  'work/packaging-02.jpg',
+  'work/brands/greendecor-app1.jpg',
   'work/koch-construtora.jpg',
   'work/valkyrias.jpg',
   'work/gn-gold.jpg',
@@ -345,8 +361,8 @@ export const marqueeRowTwo = [
   'work/dengue-outdoor.jpg',
   'work/brands/stalotech-cards.jpg',
   'work/brands/koch-fabric.jpg',
-  'work/arqcit-services.jpg',
-  'work/packaging-03.jpg',
+  'work/brands/l17-app2.jpg',
+  'work/brands/sulriso-office.jpg',
   'work/brands/cloudpark-apps.jpg',
   'work/vico.jpg',
   'work/total-prime.jpg',
