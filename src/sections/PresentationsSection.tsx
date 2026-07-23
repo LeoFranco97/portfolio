@@ -35,7 +35,9 @@ function DeckCard({ deck, index }: { deck: Presentation; index: number }) {
             alt={`${deck.name} presentation cover`}
             loading="lazy"
             decoding="async"
-            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] ${
+              deck.coverTop ? 'object-top' : 'object-center'
+            }`}
           />
           <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-[#0C0C0C]/0 opacity-0 transition-all duration-300 group-hover:bg-[#0C0C0C]/45 group-hover:opacity-100">
             <span className="flex items-center gap-2 rounded-full border border-[#D7E2EA]/50 bg-[#0C0C0C]/60 px-4 py-2 text-[0.7rem] font-medium uppercase tracking-widest text-[#D7E2EA] backdrop-blur-sm">

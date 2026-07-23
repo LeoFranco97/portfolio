@@ -128,22 +128,32 @@ function View({
           </button>
         )}
 
-        <img
-          key={state.index}
-          src={asset(state.images[state.index])}
-          alt={`${state.title} ${state.index + 1}`}
+        {/* Tall decks sit on a white page so dark presentations (e.g. Vico)
+            are clearly framed instead of blending into the dark backdrop. */}
+        <div
           onClick={(e) => e.stopPropagation()}
-          onLoad={(e) => {
-            const t = e.currentTarget
-            setTall(t.naturalHeight / t.naturalWidth > 1.8)
-          }}
           className={
             tall
-              ? 'mx-auto h-auto w-full max-w-[880px] rounded-xl shadow-2xl'
-              : 'max-h-full max-w-full rounded-xl object-contain shadow-2xl'
+              ? 'mx-auto w-full max-w-[880px] rounded-xl bg-white p-2 shadow-2xl'
+              : 'flex max-h-full max-w-full items-center'
           }
-          style={{ animation: 'lb-fade 0.2s ease-out' }}
-        />
+        >
+          <img
+            key={state.index}
+            src={asset(state.images[state.index])}
+            alt={`${state.title} ${state.index + 1}`}
+            onLoad={(e) => {
+              const t = e.currentTarget
+              setTall(t.naturalHeight / t.naturalWidth > 1.8)
+            }}
+            className={
+              tall
+                ? 'h-auto w-full rounded-md'
+                : 'max-h-full max-w-full rounded-xl object-contain shadow-2xl'
+            }
+            style={{ animation: 'lb-fade 0.2s ease-out' }}
+          />
+        </div>
 
         {many && (
           <button

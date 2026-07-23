@@ -185,7 +185,7 @@ export const brands: Brand[] = [
     sector: 'Footwear & fashion',
     accent: '#C9A227',
     hero: 'work/brands/gngold-hero.jpg',
-    gallery: ['work/brands/gngold-01.jpg', 'work/brands/gngold-02.jpg', 'work/brands/gngold-03.jpg'],
+    gallery: ['work/brands/gngold-full.jpg'],
     compact: true,
   },
   {
@@ -193,7 +193,7 @@ export const brands: Brand[] = [
     sector: 'Real estate',
     accent: '#C9A227',
     hero: 'work/brands/gr-hero.jpg',
-    gallery: ['work/brands/gr-01.jpg', 'work/brands/gr-02.jpg', 'work/brands/gr-03.jpg'],
+    gallery: ['work/brands/gr-full.jpg'],
     compact: true,
   },
 ]
@@ -204,6 +204,8 @@ export type Presentation = {
   cover: string
   gallery: string[]
   accent: string
+  /** Anchor the cover image to its top edge instead of centring it. */
+  coverTop?: boolean
 }
 
 /** Full decks and proposals: the whole document opens on click. */
@@ -214,6 +216,7 @@ export const presentations: Presentation[] = [
     cover: 'work/arqcit-cover.jpg',
     gallery: ['work/arqcit-full.jpg'],
     accent: '#5B7B6A',
+    coverTop: true,
   },
   {
     name: 'N1 Empreendimentos',
