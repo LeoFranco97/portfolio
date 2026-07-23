@@ -157,11 +157,27 @@ export const brands: Brand[] = [
     gallery: ['work/brands/koch-full.jpg'],
   },
   {
-    name: 'RafaIN',
-    sector: 'Personal brand',
-    accent: '#3B39E0',
-    hero: 'work/brands/rafain-hero.jpg',
-    gallery: ['work/brands/rafain-full.jpg'],
+    name: 'GR Imobiliários',
+    sector: 'Real estate',
+    accent: '#C9A227',
+    hero: 'work/brands/gr-hero.jpg',
+    apps: ['work/brands/gr-app1.jpg', 'work/brands/gr-app2.jpg'],
+    gallery: ['work/brands/gr-full.jpg'],
+  },
+  {
+    name: 'Rafes',
+    sector: 'Marketing agency',
+    accent: '#1FA8E4',
+    hero: 'work/brands/rafes-hero.jpg',
+    // The two Rafes deliverables united: the full presentation, then the
+    // 22-page brand guide.
+    gallery: [
+      'work/brands/rafes-full.jpg',
+      ...Array.from(
+        { length: 22 },
+        (_, i) => `work/brands/rafes-m${String(i).padStart(2, '0')}.jpg`,
+      ),
+    ],
     compact: true,
   },
   {
@@ -181,35 +197,11 @@ export const brands: Brand[] = [
     compact: true,
   },
   {
-    name: 'GN Gold',
-    sector: 'Footwear & fashion',
-    accent: '#C9A227',
-    hero: 'work/brands/gngold-hero.jpg',
-    gallery: ['work/brands/gngold-full.jpg'],
-    compact: true,
-  },
-  {
-    name: 'GR Imobiliários',
-    sector: 'Real estate',
-    accent: '#C9A227',
-    hero: 'work/brands/gr-hero.jpg',
-    gallery: ['work/brands/gr-full.jpg'],
-    compact: true,
-  },
-  {
-    name: 'Rafes',
-    sector: 'Marketing agency',
-    accent: '#1FA8E4',
-    hero: 'work/brands/rafes-hero.jpg',
-    // The two Rafes deliverables united: the full presentation, then the
-    // 22-page brand guide.
-    gallery: [
-      'work/brands/rafes-full.jpg',
-      ...Array.from(
-        { length: 22 },
-        (_, i) => `work/brands/rafes-m${String(i).padStart(2, '0')}.jpg`,
-      ),
-    ],
+    name: 'RafaIN',
+    sector: 'Personal brand',
+    accent: '#3B39E0',
+    hero: 'work/brands/rafain-hero.jpg',
+    gallery: ['work/brands/rafain-full.jpg'],
     compact: true,
   },
 ]
