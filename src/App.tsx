@@ -5,6 +5,7 @@ import ResultsSection from './sections/ResultsSection'
 import ServicesSection from './sections/ServicesSection'
 import ProjectsSection from './sections/ProjectsSection'
 import BrandingSection from './sections/BrandingSection'
+import PresentationsSection from './sections/PresentationsSection'
 import ContactSection from './sections/ContactSection'
 import { LightboxProvider } from './components/Lightbox'
 
@@ -19,6 +20,7 @@ export default function App() {
         <ServicesSection />
         <BrandingSection />
         <ProjectsSection />
+        <PresentationsSection />
         <ContactSection />
       </main>
     </LightboxProvider>

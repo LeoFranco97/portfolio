@@ -110,9 +110,10 @@ export type Brand = {
   compact?: boolean
 }
 
-/** Page-image paths for a multi-page presentation. */
-const brandPages = (slug: string, n: number) =>
-  Array.from({ length: n }, (_, i) => `work/brands/${slug}-p${String(i).padStart(2, '0')}.jpg`)
+/** Page-image paths for a multi-page presentation under a folder. */
+const pagesIn = (dir: string, slug: string, n: number) =>
+  Array.from({ length: n }, (_, i) => `${dir}/${slug}-p${String(i).padStart(2, '0')}.jpg`)
+const brandPages = (slug: string, n: number) => pagesIn('work/brands', slug, n)
 
 export const brands: Brand[] = [
   {
@@ -140,28 +141,12 @@ export const brands: Brand[] = [
     gallery: brandPages('cloudpark', 20),
   },
   {
-    name: 'Steelers',
-    sector: 'Steel construction',
-    accent: '#E8621A',
-    hero: 'work/brands/steelers-hero.jpg',
-    apps: ['work/brands/steelers-app1.jpg', 'work/brands/steelers-app2.jpg'],
-    gallery: brandPages('steelers', 8),
-  },
-  {
-    name: 'RafaIN',
-    sector: 'Personal brand',
-    accent: '#3B39E0',
-    hero: 'work/brands/rafain-hero.jpg',
-    apps: ['work/brands/rafain-app1.jpg', 'work/brands/rafain-app2.jpg'],
-    gallery: ['work/brands/rafain-full.jpg'],
-  },
-  {
-    name: 'Green Decor',
-    sector: 'Furniture & decor',
-    accent: '#1F6B43',
-    hero: 'work/brands/greendecor-hero.jpg',
-    apps: ['work/brands/greendecor-app1.jpg', 'work/brands/greendecor-app2.jpg'],
-    gallery: brandPages('greendecor', 25),
+    name: 'L17 Capital',
+    sector: 'Real estate development',
+    accent: '#1C6B5A',
+    hero: 'work/brands/l17-hero.jpg',
+    apps: ['work/brands/l17-app1.jpg', 'work/brands/l17-app2.jpg'],
+    gallery: ['work/brands/l17-full.jpg'],
   },
   {
     name: 'Koch Engenharia',
@@ -170,6 +155,14 @@ export const brands: Brand[] = [
     hero: 'work/brands/koch-hero.jpg',
     apps: ['work/brands/koch-cards.jpg', 'work/brands/koch-fabric.jpg'],
     gallery: ['work/brands/koch-full.jpg'],
+  },
+  {
+    name: 'RafaIN',
+    sector: 'Personal brand',
+    accent: '#3B39E0',
+    hero: 'work/brands/rafain-hero.jpg',
+    gallery: ['work/brands/rafain-full.jpg'],
+    compact: true,
   },
   {
     name: 'Vico',
@@ -186,6 +179,62 @@ export const brands: Brand[] = [
     hero: 'work/brands/prime-hero.jpg',
     gallery: ['work/brands/prime-full.jpg'],
     compact: true,
+  },
+  {
+    name: 'GN Gold',
+    sector: 'Footwear & fashion',
+    accent: '#C9A227',
+    hero: 'work/brands/gngold-hero.jpg',
+    gallery: ['work/brands/gngold-01.jpg', 'work/brands/gngold-02.jpg', 'work/brands/gngold-03.jpg'],
+    compact: true,
+  },
+  {
+    name: 'GR Imobiliários',
+    sector: 'Real estate',
+    accent: '#C9A227',
+    hero: 'work/brands/gr-hero.jpg',
+    gallery: ['work/brands/gr-01.jpg', 'work/brands/gr-02.jpg', 'work/brands/gr-03.jpg'],
+    compact: true,
+  },
+]
+
+export type Presentation = {
+  name: string
+  kind: string
+  cover: string
+  gallery: string[]
+  accent: string
+}
+
+/** Full decks and proposals: the whole document opens on click. */
+export const presentations: Presentation[] = [
+  {
+    name: 'ARQCIT',
+    kind: 'Architecture · budget proposal',
+    cover: 'work/arqcit-cover.jpg',
+    gallery: ['work/arqcit-full.jpg'],
+    accent: '#5B7B6A',
+  },
+  {
+    name: 'N1 Empreendimentos',
+    kind: 'Real estate · company deck',
+    cover: 'work/n1deck-p00.jpg',
+    gallery: pagesIn('work', 'n1deck', 20),
+    accent: '#B79A5B',
+  },
+  {
+    name: 'Steelers',
+    kind: 'Steel construction · proposal',
+    cover: 'work/brands/steelers-hero.jpg',
+    gallery: brandPages('steelers', 8),
+    accent: '#E8621A',
+  },
+  {
+    name: 'Green Decor',
+    kind: 'Furniture & decor · portfolio',
+    cover: 'work/brands/greendecor-hero.jpg',
+    gallery: brandPages('greendecor', 25),
+    accent: '#1F6B43',
   },
 ]
 
@@ -226,23 +275,6 @@ export const projects: Project[] = [
   },
   {
     n: '02',
-    category: 'Brand & Editorial / Client',
-    name: 'ARQCIT Architecture',
-    blurb:
-      'Proposal and brand document system for an architecture and interiors studio, turning a commercial quote into an editorial piece. My most viewed project, with more than 15,000 views on Behance.',
-    images: {
-      col1a: 'work/arqcit-detail.jpg',
-      col1b: 'work/arqcit-services.jpg',
-      col2: 'work/arqcit-cover.jpg',
-    },
-    gallery: [
-      'work/arqcit-cover.jpg',
-      'work/arqcit-services.jpg',
-      'work/arqcit-detail.jpg',
-    ],
-  },
-  {
-    n: '03',
     category: 'International / Confidential',
     name: 'Bond and Partners',
     blurb:
@@ -263,25 +295,7 @@ export const projects: Project[] = [
     nda: true,
   },
   {
-    n: '04',
-    category: 'Real Estate / Client',
-    name: 'N1 Empreendimentos',
-    blurb:
-      'Launch and sales creative for a coastal high-rise developer in Santa Catarina, covering launch teasers and campaign systems across a portfolio of residential towers, plus a continuous social media programme.',
-    images: {
-      col1a: 'work/n1-tower-urbanbeach.jpg',
-      col1b: 'work/n1-tower-skybridge.jpg',
-      col2: 'work/n1-tower-numberone.jpg',
-    },
-    gallery: [
-      'work/n1-tower-numberone.jpg',
-      'work/n1-tower-urbanbeach.jpg',
-      'work/n1-tower-skybridge.jpg',
-      'work/n1-labrise-1.jpg',
-    ],
-  },
-  {
-    n: '05',
+    n: '03',
     category: 'Retail / Client',
     name: 'Berlanda',
     blurb:
