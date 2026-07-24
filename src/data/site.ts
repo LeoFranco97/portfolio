@@ -111,11 +111,6 @@ export type Brand = {
   compact?: boolean
 }
 
-/** Page-image paths for a multi-page presentation under a folder. */
-const pagesIn = (dir: string, slug: string, n: number) =>
-  Array.from({ length: n }, (_, i) => `${dir}/${slug}-p${String(i).padStart(2, '0')}.jpg`)
-const brandPages = (slug: string, n: number) => pagesIn('work/brands', slug, n)
-
 export const brands: Brand[] = [
   {
     name: 'Sulriso',
@@ -139,7 +134,7 @@ export const brands: Brand[] = [
     accent: '#2FA3E6',
     hero: 'work/brands/cloudpark-hero.jpg',
     apps: ['work/brands/cloudpark-colors.jpg', 'work/brands/cloudpark-apps.jpg'],
-    gallery: brandPages('cloudpark', 20),
+    gallery: ['work/brands/cloudpark-deck.jpg'],
     compact: true,
   },
   {
@@ -224,21 +219,21 @@ export const presentations: Presentation[] = [
     name: 'N1 Empreendimentos',
     kind: 'Real estate · company deck',
     cover: 'work/n1deck-p00.jpg',
-    gallery: pagesIn('work', 'n1deck', 20),
+    gallery: ['work/n1deck-full.jpg'],
     accent: '#B79A5B',
   },
   {
     name: 'Steelers',
     kind: 'Steel construction · proposal',
     cover: 'work/brands/steelers-hero.jpg',
-    gallery: brandPages('steelers', 8),
+    gallery: ['work/brands/steelers-deck.jpg'],
     accent: '#E8621A',
   },
   {
     name: 'Green Decor',
     kind: 'Furniture & decor · portfolio',
     cover: 'work/brands/greendecor-hero.jpg',
-    gallery: brandPages('greendecor', 25),
+    gallery: ['work/brands/greendecor-deck.jpg'],
     accent: '#1F6B43',
   },
 ]

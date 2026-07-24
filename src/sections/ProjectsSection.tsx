@@ -33,12 +33,6 @@ function Card({
       >
         <div className="mb-4 flex flex-wrap items-center justify-between gap-4 px-2 sm:mb-6 md:px-4">
           <div className="flex items-center gap-4 md:gap-6">
-            <span
-              className="font-black leading-none tracking-tight text-[#D7E2EA]"
-              style={{ fontSize: 'clamp(2.5rem, 7vw, 110px)' }}
-            >
-              {project.n}
-            </span>
             <div className="flex flex-col gap-1">
               <span className="text-[0.65rem] font-light uppercase tracking-widest text-[#D7E2EA]/50 sm:text-xs">
                 {project.category}

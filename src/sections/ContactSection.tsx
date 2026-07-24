@@ -1,7 +1,7 @@
 // lucide dropped its brand icons, so AtSign stands in for the social handle.
 import { Mail, MessageCircle, AtSign } from 'lucide-react'
 import FadeIn from '../components/FadeIn'
-import { availability, experience, profile } from '../data/site'
+import { asset, availability, experience, profile } from '../data/site'
 
 export default function ContactSection() {
   return (
@@ -114,9 +114,22 @@ export default function ContactSection() {
         </div>
 
         <FadeIn delay={0.3} y={20}>
-          <p className="mt-16 border-t border-[#D7E2EA]/15 pt-8 text-center text-xs font-light uppercase tracking-widest text-[#D7E2EA]/40">
-            {profile.fullName}, {profile.role}, based in {profile.location}
-          </p>
+          <div className="mt-16 flex flex-col items-center gap-5 border-t border-[#D7E2EA]/15 pt-10">
+            <img
+              src={asset('portrait.png')}
+              alt={profile.fullName}
+              loading="lazy"
+              decoding="async"
+              className="h-20 w-20 rounded-full object-cover object-top ring-1 ring-[#D7E2EA]/20"
+              style={{
+                background:
+                  'radial-gradient(circle at 50% 35%, #2a2352 0%, #0C0C0C 70%)',
+              }}
+            />
+            <p className="text-center text-xs font-light uppercase tracking-widest text-[#D7E2EA]/40">
+              {profile.fullName}, {profile.role}, based in {profile.location}
+            </p>
+          </div>
         </FadeIn>
       </div>
     </section>
